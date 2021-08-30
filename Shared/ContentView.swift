@@ -7,25 +7,30 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View
 {
     var body: some View
        {
+        
        // Text("World")
-        VStack {
+        VStack
+            {
+            
+            Button(action: ButtonPressed, label: {
+                Text("Click Me !!!")
+                    .modifier(MyFont())
+            })
+            
             Text("Hello, Karan")
                 .bold()
-                .font(.custom("Bebas Neue", size: 50))
-                .padding()
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                .modifier(MyFont())
+                
                 
                 
             Text("Good Morning")
-                .font(.title)
-                .bold()
-                .padding()
-                .autocapitalization(.allCharacters)
-
+                .modifier(MyFont())
             myVstack.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 .foregroundColor(.blue)
                 }
@@ -53,14 +58,23 @@ struct ContentView: View
 }
 
 
+func ButtonPressed() {
+    print("Pressed Successfully")
+}
+
+
 struct MyFont: ViewModifier
 {
     func body(content: Content) -> some View
     {
         content
-            .font(.title)
+            .font(.custom("Bebas Neue", size: 50))
             .padding()
-            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+            .foregroundColor(.white)
+            .background(Color.black)
+            .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
+
+        
     }
 }
 
